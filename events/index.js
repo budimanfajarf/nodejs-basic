@@ -8,8 +8,12 @@
 // TODO 1
 const { EventEmitter } = require('events')
 
-const birthdayEventListener = (name) => {
-    console.log(`Happy birthday ${name}!`)
+const sayHappyBirthday = (name) => console.log(`Happy birthday ${name}!`)
+const tellAge = (age) => console.log(`Your age is ${age}`)
+
+const birthdayEventListener = ({ name, age }) => {
+    sayHappyBirthday(name)
+    tellAge(age)
 }
 
 // TODO 2
@@ -19,7 +23,7 @@ myEmitter = new EventEmitter();
 myEmitter.on('birthday', birthdayEventListener)
 
 // TODO 4
-myEmitter.emit('birthday', 'budi')
+myEmitter.emit('birthday', { name: 'budi', age: 25 })
 
 /**
  * Run: node ./events/index.js
